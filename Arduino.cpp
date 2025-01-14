@@ -5,11 +5,8 @@ void setup()
 
 }
 
-void loop() {
-
-Serial.write(66);
-
-  delay(1000)
+void loop() 
+{
   
   if (Serial.available() > 0) 
   {
