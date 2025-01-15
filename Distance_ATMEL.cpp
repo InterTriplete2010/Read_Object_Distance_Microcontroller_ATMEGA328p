@@ -89,7 +89,7 @@ int main(void)
 			sei();
 			
 		unsigned long elapsed_time; //Elapsed time;
-		double time_traveled;	//Time traveled from the sensor to the obejct and back
+		unsigned long time_traveled;	//Time traveled from the sensor to the obejct and back
 		
 	while (1)
 	{	
@@ -106,7 +106,7 @@ TCNT0 = 0;	//Set the timer to zero
 		while ((PINB & (1 << PINB0)));	//Execute until the sound is sent back to the sensor
 		
 		elapsed_time = TCNT0;	
-		time_traveled = (343*((double)elapsed_time + (double)(time_elapsed_ms*(pow(2,8)-1)))/((double)F_CPU/6400));
+		time_traveled = (343*(elapsed_time + (time_elapsed_ms*(pow(2,8)-1)))/(F_CPU/6400));
 	
 			USART_Transmit((uint8_t)time_traveled/2);	//Take half of the clock, because the sound needs to bounce back to the sensor
 			
